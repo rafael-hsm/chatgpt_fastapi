@@ -37,6 +37,17 @@ yarn create vite .
 npx tailwindcss init -p
 ```
 
+
+## To run
+Some usefull comands
+```bash
+yarn run vite
+
+yarn build
+
+yarn preview
+```
+
 ## Creating your first component
 ```
 rfce (reactFunctionalExportComponent)
