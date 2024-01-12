@@ -3,35 +3,34 @@ from decouple import config
 
 ELEVEN_LABS_API_KEY = config("ELEVEN_LABS_API_KEY")
 
+
 # Eleven Labs
-# Convert Text to Speech
+# Convert text to speech
 def convert_text_to_speech(message):
-    
-    #Define Data (body)
-    body = {
-        "text": message,
-        "voice_setting": {
-            "stability": 0,
-            "similarity_boost": 0,
-        }
+    body = {"text": message, "voice_settings": {"stability": 0, "similarity_boost": 0}}
+
+    voice_shaun = "mTSvIrm2hmcnOvb21nW2"
+    voice_leonor = "21m00Tcm4TlvDq8ikWAM"
+    voice_antoni = "ErXwobaYiN019PkySvjV"
+
+    # Construct request headers and url
+    headers = {
+        "xi-api-key": ELEVEN_LABS_API_KEY,
+        "Content-Type": "application/json",
+        "accept": "audio/mpeg",
     }
-    
-    # Define voice
-    voice_emily = "LcfcDJNUP1GQjkzn1xUU"
-    
-    # Constructing Headers and Endpoint
-    headers = {"xi-api-key": ELEVEN_LABS_API_KEY, "Content-Type": "application/json", "accept": "audio/mpeg"}
-    endpoint = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_emily}"
-    
-    # Send request
+    endpoint = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_leonor}"
+
     try:
         response = requests.post(endpoint, json=body, headers=headers)
     except Exception as e:
-        return
-    
-    # Handle Response
+        print(e)
+        raise e
+
     if response.status_code == 200:
+        # with open("output.wav", "wb") as f:
+        #     f.write(audio_data)
         return response.content
     else:
-        return
-    
+        print(e)
+        raise e
