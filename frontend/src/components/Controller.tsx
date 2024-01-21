@@ -101,7 +101,7 @@ const Controller = () => {
 
                     {messages.length == 0 && !isLoading && (
                         <div className="text-center font-light italic mt-10">
-                            I am your assistant for questions with the English Language, send me your question...
+                            I'm your assistant for questions with the English Language or Python programming, send me your question...
                         </div>
                     )}
 
