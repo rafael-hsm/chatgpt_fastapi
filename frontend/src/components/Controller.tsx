@@ -28,9 +28,11 @@ const Controller = () => {
                 const formData = new FormData();
                 formData.append("file", blob, "myFile.wav");
 
+                const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
                 // send form data to api endpoint
                 await axios
-                    .post("http://localhost:8000/post-audio", formData, {
+                    .post(`${backendUrl}/post-audio`, formData, {
                         headers: {
                             "Content-Type": "audio/mpeg",
                         },

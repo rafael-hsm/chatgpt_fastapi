@@ -12,8 +12,10 @@ function Title({ setMessages }: Props) {
   const resetConversation = async () => {
     setIsResetting(true);
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
     await axios
-      .get("http://localhost:8000/reset", {
+      .get(`${backendUrl}/reset`, {
         headers: {
           "Content-Type": "application/json",
         },
