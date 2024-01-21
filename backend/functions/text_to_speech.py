@@ -23,14 +23,13 @@ def convert_text_to_speech(message):
 
     try:
         response = requests.post(endpoint, json=body, headers=headers)
-    except Exception as e:
-        print(e)
-        raise e
-
-    if response.status_code == 200:
-        # with open("output.wav", "wb") as f:
-        #     f.write(audio_data)
+        response.raise_for_status()  # Raises a HTTPError for certain status codes
         return response.content
-    else:
-        print(e)
+    except requests.exceptions.HTTPError as http_err:
+        # Handle specific HTTP errors (e.g., 4xx, 5xx responses)
+        print(f"HTTP error occurred: {http_err}")
+        raise http_err
+    except Exception as e:
+        # Handle other possible errors (e.g., network issues)
+        print(f"Other error occurred: {e}")
         raise e
