@@ -32,7 +32,7 @@ def get_chat_response(message_input):
     # print(messages[:-1])
     
     try:
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=messages
         )

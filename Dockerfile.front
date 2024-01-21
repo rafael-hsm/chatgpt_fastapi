@@ -1,0 +1,23 @@
+# Dockerfile for Vite Frontend
+FROM node:latest
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy package.json and yarn.lock files
+COPY frontend/package.json frontend/yarn.lock ./
+
+# Install app dependencies
+RUN yarn install
+
+# Copy the rest of your frontend source code
+COPY frontend/ .
+
+# Build the app (ensure you have a build script in your package.json)
+RUN yarn build
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Command to run the app
+CMD ["npx", "vite", "preview", "--port", "3000"]
