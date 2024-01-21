@@ -22,7 +22,7 @@ origins = [
     "http://localhost:5174",
     "http://localhost:4173",
     "http://localhost:4174",
-    "https://teacher-leonor.onrender.com/",
+    "https://teacher-leonor.onrender.com",
 ]
 
 # CORS - Middleware
